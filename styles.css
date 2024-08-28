@@ -53,3 +53,20 @@ footer {
     bottom: 0;
     width: 100%;
 }
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.profile-pic {
+    border-radius: 50%;
+    width: 150px;
+}
+
+.project-img {
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    margin: 20px 0;
+}
