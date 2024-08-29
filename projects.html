@@ -33,11 +33,35 @@
             font-size: 24px;
             color: #007BFF;
         }
-        .project img {
-            max-width: 100%;
+        .project-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        .project-content img {
+            max-width: 50%;
             height: auto;
-            display: block;
-            margin: 10px 0;
+            flex-shrink: 0;
+        }
+        .project-content .text {
+            flex: 1;
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007BFF;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -47,70 +71,99 @@
 
         <div class="project">
             <h2>NIRVANA 2.0 Project - Clearwater Dynamics Pvt. Ltd. (Completed)</h2>
-            <p><strong>Role:</strong> GIS & Water Resources Engineer</p>
-            <p><strong>Responsibilities:</strong></p>
-            <ul>
-                <li>Watershed delineation using DEM in PCSWMM.</li>
-                <li>Conducted flood analysis for 50-year and 100-year design storms using 1D and 2D models.</li>
-                <li>Designed storm systems based on calculated runoff parameters.</li>
-            </ul>
-            <img src="assets/images/schematic-diagram-of-1D-and-2D-model-coupling_W640.jpg" alt="Schematic diagram of 1D and 2D model coupling">
+            <div class="project-content">
+                <div class="text">
+                    <p><strong>Role:</strong> GIS & Water Resources Engineer</p>
+                    <p><strong>Responsibilities:</strong></p>
+                    <ul>
+                        <li>Watershed delineation using DEM in PCSWMM.</li>
+                        <li>Conducted flood analysis for 50-year and 100-year design storms using 1D and 2D models.</li>
+                        <li>Designed storm systems based on calculated runoff parameters.</li>
+                    </ul>
+                </div>
+                <img src="assets/images/schematic-diagram-of-1D-and-2D-model-coupling_W640.jpg" alt="Schematic diagram of 1D and 2D model coupling">
+            </div>
         </div>
 
         <div class="project">
             <h2>Jeevan Mission (Government Project - Completed)</h2>
-            <p><strong>Role:</strong> GIS & Water Resources Engineer</p>
-            <p><strong>Responsibilities:</strong></p>
-            <ul>
-                <li>Surge analysis for pipe networks in various villages using SAP2.</li>
-                <li>Automated generation of reports for multiple villages using Python.</li>
-                <li>Processed bulk file conversions to streamline report submissions.</li>
-            </ul>
+            <div class="project-content">
+                <div class="text">
+                    <p><strong>Role:</strong> GIS & Water Resources Engineer</p>
+                    <p><strong>Responsibilities:</strong></p>
+                    <ul>
+                        <li>Surge analysis for pipe networks in various villages using SAP2.</li>
+                        <li>Automated generation of reports for multiple villages using Python.</li>
+                        <li>Processed bulk file conversions to streamline report submissions.</li>
+                    </ul>
+                </div>
+                <!-- Add image here if available -->
+            </div>
         </div>
 
         <div class="project">
             <h2>Water Systems Project (US Project - Completed)</h2>
-            <p><strong>Role:</strong> GIS & Water Resources Engineer</p>
-            <p><strong>Responsibilities:</strong></p>
-            <ul>
-                <li>Extraction of rainfall and temperature data using Google Earth Engine.</li>
-                <li>Creation of dashboards using Power BI to visualize data insights.</li>
-            </ul>
+            <div class="project-content">
+                <div class="text">
+                    <p><strong>Role:</strong> GIS & Water Resources Engineer</p>
+                    <p><strong>Responsibilities:</strong></p>
+                    <ul>
+                        <li>Extraction of rainfall and temperature data using Google Earth Engine.</li>
+                        <li>Creation of dashboards using Power BI to visualize data insights.</li>
+                    </ul>
+                </div>
+                <!-- Add image here if available -->
+            </div>
         </div>
 
         <div class="project">
             <h2>Ph.D. Research (2016-2024)</h2>
-            <p><strong>Title:</strong> "Investigations on Mangrove Dynamics, Phenology, and Gross Primary Productivity (GPP) Estimations using Satellite-derived Parameters"</p>
-            <p><strong>Responsibilities:</strong></p>
-            <ul>
-                <li>Developed a method for estimating mangrove phenology metrics combining climate data and vegetation indices.</li>
-                <li>Modeled GPP using satellite-derived optical and climatic data.</li>
-                <li>Created wetland maps and performed LULC classification for the Sundarbans mangrove forest.</li>
-                <li>Conducted hydrological modeling and estimated the phenological parameters of mangroves using advanced analytical methods.</li>
-            </ul>
+            <div class="project-content">
+                <div class="text">
+                    <p><strong>Title:</strong> "Investigations on Mangrove Dynamics, Phenology, and Gross Primary Productivity (GPP) Estimations using Satellite-derived Parameters"</p>
+                    <p><strong>Responsibilities:</strong></p>
+                    <ul>
+                        <li>Developed a method for estimating mangrove phenology metrics combining climate data and vegetation indices.</li>
+                        <li>Modeled GPP using satellite-derived optical and climatic data.</li>
+                        <li>Created wetland maps and performed LULC classification for the Sundarbans mangrove forest.</li>
+                        <li>Conducted hydrological modeling and estimated the phenological parameters of mangroves using advanced analytical methods.</li>
+                    </ul>
+                </div>
+                <!-- Add image here if available -->
+            </div>
         </div>
 
         <div class="project">
             <h2>M.Tech Dissertation (2013-2015)</h2>
-            <p><strong>Title:</strong> "Determination and Analysis of Missing Meteorological Data"</p>
-            <p><strong>Responsibilities:</strong></p>
-            <ul>
-                <li>Collected rainfall data from 2001 to 2005 for the Limkheda rain gauge in the Panam catchment area.</li>
-                <li>Deliberately hid 5% and 10% of the rainfall data to evaluate different methods for filling in missing data.</li>
-                <li>Applied five statistical methods (i.e., series mean, mean of nearby points, median of nearby points, linear interpolation, and linear trend at point methods) in SPSS software to estimate the hidden rainfall values</li>
-                <li>Analyzed the accuracy of the methods by comparing the estimated data with the hidden data. </li>
-                <li>Identified the most accurate method for replacing missing meteorological data based on the RMSE analysis. </li>
-            </ul>
+            <div class="project-content">
+                <div class="text">
+                    <p><strong>Title:</strong> "Determination and Analysis of Missing Meteorological Data"</p>
+                    <p><strong>Responsibilities:</strong></p>
+                    <ul>
+                        <li>Collected rainfall data from 2001 to 2005 for the Limkheda rain gauge in the Panam catchment area.</li>
+                        <li>Deliberately hid 5% and 10% of the rainfall data to evaluate different methods for filling in missing data.</li>
+                        <li>Applied five statistical methods (i.e., series mean, mean of nearby points, median of nearby points, linear interpolation, and linear trend at point methods) in SPSS software to estimate the hidden rainfall values.</li>
+                        <li>Analyzed the accuracy of the methods by comparing the estimated data with the hidden data.</li>
+                        <li>Identified the most accurate method for replacing missing meteorological data based on the RMSE analysis.</li>
+                    </ul>
+                </div>
+                <!-- Add image here if available -->
+            </div>
         </div>
 
         <div class="project">
             <h2>B.Tech Major Project (2013)</h2>
-            <p><strong>Title:</strong> "Design of Residential Apartment"</p>
-            <p><strong>Responsibilities:</strong></p>
-            <ul>
-                <li>Analyzed and designed a five-storied residential apartment using STRUDS software.</li>
-                <li>Presented design reports for slabs, beams, columns, and footings.</li>
-            </ul>
+            <div class="project-content">
+                <div class="text">
+                    <p><strong>Title:</strong> "Design of Residential Apartment"</p>
+                    <p><strong>Responsibilities:</strong></p>
+                    <ul>
+                        <li>Analyzed and designed a five-storied residential apartment using STRUDS software.</li>
+                        <li>Presented design reports for slabs, beams, columns, and footings.</li>
+                    </ul>
+                </div>
+                <!-- Add image here if available -->
+            </div>
         </div>
 
     </div>
