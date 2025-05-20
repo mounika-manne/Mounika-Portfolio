@@ -52,7 +52,7 @@
     document.getElementById("contact-form").addEventListener("submit", function (e) {
       e.preventDefault();
 
-      emailjs.sendForm("user_name", "Contact Us: {{portfolio}}", this) // 🔁 Replace with actual IDs
+      emailjs.sendForm("user_name", "template_xcrzb3p", this) // 🔁 Replace with actual IDs
         .then(function () {
           alert("Message sent successfully!");
           document.getElementById("contact-form").reset();
