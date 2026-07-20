@@ -1,43 +1,673 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Mounika Manne </title>
-    <link rel="stylesheet" href="styles.css">
-    <meta name="description" content="Mounika Manne's portfolio showcasing expertise in GIS, remote sensing, and hydrological modeling.">
-    <meta name="keywords" content="GIS, remote sensing, hydrological modelling, environmental science">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Mounika Manne — Remote Sensing &amp; Environmental Science</title>
+<meta name="description" content="Portfolio of Dr. Mounika Manne, researcher in remote sensing, ecological modelling, coastal ecosystems and hydrological modelling.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0A121E;
+    --bg-surface: #101B2D;
+    --bg-elevated: #16233A;
+    --line: rgba(233, 240, 248, 0.10);
+    --line-strong: rgba(233, 240, 248, 0.18);
+    --text: #EAF0F7;
+    --text-muted: #93A2B8;
+    --text-faint: #5C6C84;
+    --teal: #5EEAD4;
+    --gold: #E3B23C;
+    --teal-dim: rgba(94, 234, 212, 0.12);
+    --gold-dim: rgba(227, 178, 60, 0.12);
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Newsreader', serif;
+    --mono: 'IBM Plex Mono', monospace;
+    --max: 1120px;
+  }
 
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
+  }
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+
+  :focus-visible{
+    outline:2px solid var(--teal);
+    outline-offset:3px;
+  }
+
+  .wrap{ max-width:var(--max); margin:0 auto; padding:0 32px; }
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:0.08em;
+    color:var(--teal);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    text-transform:uppercase;
+  }
+  .eyebrow::before{
+    content:"";
+    width:18px; height:1px;
+    background:var(--teal);
+    display:inline-block;
+  }
+
+  /* ============ NAV ============ */
+  header.site-nav{
+    position:fixed; top:0; left:0; right:0;
+    z-index:100;
+    background:rgba(10,18,30,0.78);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:var(--max); margin:0 auto; padding:18px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .nav-brand{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:17px;
+    letter-spacing:0.02em;
+  }
+  .nav-brand span{ color:var(--teal); }
+  .nav-links{
+    display:flex; gap:36px;
+    list-style:none;
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:0.03em;
+  }
+  .nav-links a{
+    color:var(--text-muted);
+    position:relative;
+    padding:4px 0;
+    transition:color 0.2s ease;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible{ color:var(--text); }
+  .nav-links a::after{
+    content:"";
+    position:absolute; left:0; bottom:0;
+    width:0; height:1px;
+    background:var(--teal);
+    transition:width 0.25s ease;
+  }
+  .nav-links a:hover::after{ width:100%; }
+
+  .nav-toggle{
+    display:none;
+    background:none; border:1px solid var(--line-strong);
+    color:var(--text); width:38px; height:38px;
+    border-radius:6px;
+    cursor:pointer;
+    flex-direction:column; align-items:center; justify-content:center; gap:4px;
+  }
+  .nav-toggle span{ width:16px; height:1.5px; background:var(--text); display:block; }
+
+  /* ============ HERO ============ */
+  .hero{
+    position:relative;
+    padding:168px 0 96px;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .contour-bg{
+    position:absolute; inset:0;
+    z-index:0;
+    opacity:0.55;
+    pointer-events:none;
+  }
+  .contour-bg svg{ width:100%; height:100%; }
+  .contour-bg path{
+    fill:none;
+    stroke:var(--line-strong);
+    stroke-width:1;
+  }
+  .contour-bg path.accent{ stroke:var(--teal); opacity:0.35; }
+
+  .hero-inner{
+    position:relative; z-index:1;
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:56px;
+    align-items:center;
+  }
+
+  .hero-copy h1{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(38px, 5.2vw, 64px);
+    line-height:1.05;
+    margin:18px 0 14px;
+    letter-spacing:-0.01em;
+  }
+  .hero-copy .role{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:clamp(16px, 2vw, 20px);
+    color:var(--teal);
+    margin-bottom:22px;
+  }
+  .hero-copy p.lede{
+    font-size:17px;
+    color:var(--text-muted);
+    max-width:52ch;
+    margin-bottom:34px;
+  }
+
+  .hero-actions{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:0.02em;
+    padding:13px 22px;
+    border-radius:4px;
+    border:1px solid var(--line-strong);
+    display:inline-flex; align-items:center; gap:8px;
+    transition:all 0.2s ease;
+  }
+  .btn-primary{
+    background:var(--teal);
+    color:#08141a;
+    border-color:var(--teal);
+    font-weight:500;
+  }
+  .btn-primary:hover{ background:#7ff2df; transform:translateY(-1px); }
+  .btn-ghost{ color:var(--text); }
+  .btn-ghost:hover{ border-color:var(--text-muted); background:var(--bg-surface); }
+
+  .hero-portrait{
+    position:relative;
+    justify-self:center;
+    width:280px; height:280px;
+  }
+  .portrait-ring{
+    position:absolute; inset:-14px;
+    border:1px solid var(--line-strong);
+    border-radius:50%;
+  }
+  .portrait-ring::before{
+    content:"";
+    position:absolute; inset:-14px;
+    border:1px dashed rgba(94,234,212,0.25);
+    border-radius:50%;
+  }
+  .portrait-frame{
+    width:100%; height:100%;
+    border-radius:50%;
+    overflow:hidden;
+    background:linear-gradient(155deg, var(--bg-elevated), var(--bg-surface));
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .portrait-frame img{ width:100%; height:100%; object-fit:cover; }
+  .portrait-placeholder{
+    font-family:var(--display);
+    font-size:56px;
+    font-weight:600;
+    color:var(--text-faint);
+  }
+  .coord-tag{
+    position:absolute;
+    bottom:-6px; right:-6px;
+    background:var(--bg);
+    border:1px solid var(--line-strong);
+    padding:6px 10px;
+    border-radius:4px;
+    font-family:var(--mono);
+    font-size:10.5px;
+    color:var(--gold);
+    letter-spacing:0.03em;
+  }
+
+  /* ============ SECTION SCAFFOLDING ============ */
+  section{ padding:96px 0; position:relative; }
+  section + section{ border-top:1px solid var(--line); }
+  .section-head{ margin-bottom:52px; max-width:640px; }
+  .section-head h2{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(26px, 3vw, 36px);
+    margin-top:14px;
+    letter-spacing:-0.01em;
+  }
+  .section-head p{
+    color:var(--text-muted);
+    margin-top:14px;
+    font-size:16px;
+  }
+
+  /* ============ ABOUT ============ */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    gap:64px;
+  }
+  .about-grid p{
+    color:var(--text-muted);
+    font-size:16.5px;
+    margin-bottom:18px;
+  }
+  .stat-list{ display:flex; flex-direction:column; gap:0; }
+  .stat-item{
+    padding:20px 0;
+    border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; align-items:baseline;
+  }
+  .stat-item:last-child{ border-bottom:1px solid var(--line); }
+  .stat-num{
+    font-family:var(--display);
+    font-size:30px; font-weight:600;
+    color:var(--teal);
+  }
+  .stat-label{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--text-muted);
+    text-align:right;
+    letter-spacing:0.02em;
+    max-width:16ch;
+  }
+
+  /* ============ RESEARCH FOCUS ============ */
+  .focus-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .focus-card{
+    background:var(--bg);
+    padding:36px;
+    transition:background 0.25s ease;
+  }
+  .focus-card:hover{ background:var(--bg-surface); }
+  .focus-index{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--gold);
+    letter-spacing:0.05em;
+  }
+  .focus-card h3{
+    font-family:var(--display);
+    font-size:19px;
+    font-weight:600;
+    margin:16px 0 10px;
+  }
+  .focus-card p{
+    color:var(--text-muted);
+    font-size:15px;
+  }
+
+  /* ============ PUBLICATIONS ============ */
+  .pub-list{ display:flex; flex-direction:column; }
+  .pub-item{
+    padding:26px 0;
+    border-top:1px solid var(--line);
+    display:grid;
+    grid-template-columns:90px 1fr;
+    gap:24px;
+  }
+  .pub-list .pub-item:last-child{ border-bottom:1px solid var(--line); }
+  .pub-year{
+    font-family:var(--mono);
+    font-size:14px;
+    color:var(--gold);
+  }
+  .pub-title{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:16.5px;
+    margin-bottom:6px;
+  }
+  .pub-meta{
+    font-family:var(--mono);
+    font-size:12.5px;
+    color:var(--text-faint);
+  }
+
+  /* ============ PROJECTS ============ */
+  .project-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+  .project-card{
+    border:1px solid var(--line);
+    border-radius:6px;
+    overflow:hidden;
+    background:var(--bg-surface);
+    transition:border-color 0.25s ease, transform 0.25s ease;
+  }
+  .project-card:hover{ border-color:var(--line-strong); transform:translateY(-3px); }
+  .project-thumb{
+    height:150px;
+    background:
+      linear-gradient(160deg, var(--bg-elevated), var(--bg-surface));
+    position:relative;
+    overflow:hidden;
+  }
+  .project-thumb svg{ position:absolute; inset:0; width:100%; height:100%; opacity:0.5; }
+  .project-body{ padding:22px; }
+  .project-tag{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--teal);
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+  }
+  .project-body h3{
+    font-family:var(--display);
+    font-size:17px;
+    font-weight:600;
+    margin:10px 0 8px;
+  }
+  .project-body p{ color:var(--text-muted); font-size:14.5px; }
+
+  /* ============ CONTACT ============ */
+  .contact-inner{
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:56px;
+    align-items:start;
+  }
+  .contact-inner h2{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(28px, 4vw, 44px);
+    line-height:1.15;
+    margin-top:14px;
+  }
+  .contact-links{ display:flex; flex-direction:column; gap:0; }
+  .contact-link{
+    padding:18px 0;
+    border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:var(--mono);
+    font-size:14px;
+    color:var(--text-muted);
+    transition:color 0.2s ease, padding-left 0.2s ease;
+  }
+  .contact-link:last-child{ border-bottom:1px solid var(--line); }
+  .contact-link:hover{ color:var(--text); padding-left:6px; }
+  .contact-link .arrow{ color:var(--teal); }
+
+  footer{
+    padding:32px 0;
+    text-align:center;
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--text-faint);
+    border-top:1px solid var(--line);
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 900px){
+    .nav-links{ display:none; }
+    .nav-toggle{ display:flex; }
+    .hero-inner{ grid-template-columns:1fr; }
+    .hero-portrait{ order:-1; width:200px; height:200px; }
+    .about-grid{ grid-template-columns:1fr; gap:40px; }
+    .focus-grid{ grid-template-columns:1fr; }
+    .project-grid{ grid-template-columns:1fr; }
+    .contact-inner{ grid-template-columns:1fr; }
+    section{ padding:64px 0; }
+    .hero{ padding:140px 0 64px; }
+  }
+
+  .nav-links.open{
+    display:flex;
+    position:absolute; top:100%; left:0; right:0;
+    flex-direction:column;
+    background:var(--bg-surface);
+    border-bottom:1px solid var(--line);
+    padding:20px 32px;
+    gap:18px;
+  }
+</style>
 </head>
 <body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="#home" class="nav-brand">M<span>.</span>MANNE</a>
     <nav>
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="projects.html">Projects</a></li>
-    <li><a href="publications.html">Publications</a></li>
-    <li><a href="about.html">About Me</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-</nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 
-    <header>
-        <h1>Dr. Mounika Manne</h1>
-        <h2> Researcher in Remote Sensing & Environmental Science</h2>
-       
-         <img src="assets/images/Profile1.JPG" alt="Profile Picture" style="width:200px;">
-    </header>
+<section class="hero" id="home">
+  <div class="contour-bg" aria-hidden="true">
+    <svg viewBox="0 0 1200 700" preserveAspectRatio="none">
+      <path d="M-50,120 C200,60 400,180 650,110 S1000,40 1250,100" />
+      <path d="M-50,200 C250,140 420,260 680,190 S1020,120 1250,180" />
+      <path class="accent" d="M-50,280 C220,210 460,340 700,270 S1040,200 1250,260" />
+      <path d="M-50,360 C260,300 440,420 720,350 S1060,280 1250,340" />
+      <path d="M-50,440 C230,380 470,500 690,430 S1030,360 1250,420" />
+      <path class="accent" d="M-50,520 C250,460 430,580 710,510 S1050,440 1250,500" />
+      <path d="M-50,600 C240,540 460,660 700,590 S1040,520 1250,580" />
+    </svg>
+  </div>
 
-    <section>
-        <p>I am an experienced Researcher specializing in remote sensing, ecological modelling, and environmental science. My expertise spans various domains, including geospatial analysis, time-series assessment of coastal ecosystems and hydrological modelling for flood forecasting.</p>
-        <a href="projects.html" class="button">View My Projects</a>
-        <a href="publications.html" class="button">View My Publications</a>
-        <a href="about.html" class="button">About Me</a>
-    <!--
-    </section>
-    <!<a href="assets/Dr Mounika Manne, PhD.pdf" class="button" download>Download Resume</a>>
-    -->
-    <footer>
-        <p>&copy; 2024 Manne Mounika</p>
-    </footer>
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <div class="eyebrow">16.5062° N, 80.6480° E — Andhra Pradesh, India</div>
+      <h1>Dr. Mounika Manne</h1>
+      <div class="role">Researcher in Remote Sensing &amp; Environmental Science</div>
+      <p class="lede">I study the earth's changing surface — from coastal ecosystems to flood-prone river basins — using satellite data, geospatial analysis, and hydrological models to inform how we monitor and respond to environmental change.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">View Projects →</a>
+        <a href="#publications" class="btn btn-ghost">Read Publications</a>
+      </div>
+    </div>
+    <div class="hero-portrait">
+      <div class="portrait-ring"></div>
+      <div class="portrait-frame">
+        <!-- Replace this placeholder with: <img src="assets/profile.jpg" alt="Dr. Mounika Manne"> -->
+        <span class="portrait-placeholder">MM</span>
+      </div>
+      <div class="coord-tag">EO / GIS / HYDRO</div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="eyebrow">About</div>
+      <h2 style="font-family:var(--display); font-weight:600; font-size:clamp(26px,3vw,36px); margin:14px 0 26px;">Grounded in data, focused on impact</h2>
+      <p>I am an experienced researcher specializing in remote sensing, ecological modelling, and environmental science. My work spans geospatial analysis, time-series assessment of coastal ecosystems, and hydrological modelling for flood forecasting.</p>
+      <p>I'm drawn to problems where satellite observation meets ground reality — tracking shoreline change over decades, modelling how river basins respond to extreme rainfall, and translating raw pixels into decisions that protect people and places.</p>
+      <p>Replace this section with your full bio, academic background, and current affiliation.</p>
+    </div>
+    <div class="stat-list">
+      <div class="stat-item"><span class="stat-num">10+</span><span class="stat-label">Years in geospatial &amp; environmental research</span></div>
+      <div class="stat-item"><span class="stat-num">15+</span><span class="stat-label">Peer-reviewed publications</span></div>
+      <div class="stat-item"><span class="stat-num">8</span><span class="stat-label">Research projects led or contributed to</span></div>
+      <div class="stat-item"><span class="stat-num">4</span><span class="stat-label">Core focus areas</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Research Focus</div>
+      <h2>Four lenses on a changing environment</h2>
+      <p>Each area below feeds into the others — satellite data grounds the models, and the models sharpen where the next observation should look.</p>
+    </div>
+    <div class="focus-grid">
+      <div class="focus-card">
+        <div class="focus-index">01 · EARTH OBSERVATION</div>
+        <h3>Remote Sensing &amp; GIS</h3>
+        <p>Multi-temporal satellite imagery analysis, land cover classification, and spatial modelling to track environmental change at scale.</p>
+      </div>
+      <div class="focus-card">
+        <div class="focus-index">02 · COASTS</div>
+        <h3>Coastal Ecosystem Monitoring</h3>
+        <p>Time-series assessment of mangroves, wetlands, and shoreline dynamics under climate and anthropogenic pressure.</p>
+      </div>
+      <div class="focus-card">
+        <div class="focus-index">03 · WATER</div>
+        <h3>Hydrological Modelling</h3>
+        <p>Flood forecasting and river basin modelling that combines rainfall data, terrain, and land use to predict inundation risk.</p>
+      </div>
+      <div class="focus-card">
+        <div class="focus-index">04 · SYSTEMS</div>
+        <h3>Ecological Modelling</h3>
+        <p>Simulating ecosystem response to environmental drivers to support conservation planning and land management decisions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="publications">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Publications</div>
+      <h2>Selected work</h2>
+      <p>Placeholder entries below — swap in your actual citations, journal names, and DOI links.</p>
+    </div>
+    <div class="pub-list">
+      <div class="pub-item">
+        <div class="pub-year">2025</div>
+        <div>
+          <div class="pub-title">Title of publication one — remote sensing application</div>
+          <div class="pub-meta">Journal Name · Vol. X, Issue X · DOI: 00.0000/xxxxx</div>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-year">2024</div>
+        <div>
+          <div class="pub-title">Title of publication two — coastal ecosystem time-series study</div>
+          <div class="pub-meta">Journal Name · Vol. X, Issue X · DOI: 00.0000/xxxxx</div>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-year">2023</div>
+        <div>
+          <div class="pub-title">Title of publication three — hydrological model for flood risk</div>
+          <div class="pub-meta">Journal Name · Vol. X, Issue X · DOI: 00.0000/xxxxx</div>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-year">2022</div>
+        <div>
+          <div class="pub-title">Title of publication four — ecological modelling framework</div>
+          <div class="pub-meta">Journal Name · Vol. X, Issue X · DOI: 00.0000/xxxxx</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Projects</div>
+      <h2>Selected projects</h2>
+      <p>Replace these cards with your real project names, summaries, and thumbnail images.</p>
+    </div>
+    <div class="project-grid">
+      <div class="project-card">
+        <div class="project-thumb">
+          <svg viewBox="0 0 300 150" preserveAspectRatio="none"><path d="M0,90 C60,60 120,110 180,80 S260,50 300,70" fill="none" stroke="#5EEAD4" stroke-width="1"/><path d="M0,110 C60,90 120,130 180,100 S260,80 300,100" fill="none" stroke="rgba(233,240,248,0.2)" stroke-width="1"/></svg>
+        </div>
+        <div class="project-body">
+          <div class="project-tag">Remote Sensing</div>
+          <h3>Project name one</h3>
+          <p>One or two lines describing the project scope, method, and outcome.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-thumb">
+          <svg viewBox="0 0 300 150" preserveAspectRatio="none"><path d="M0,70 C60,100 120,50 180,90 S260,120 300,80" fill="none" stroke="#E3B23C" stroke-width="1"/><path d="M0,100 C60,130 120,80 180,120 S260,150 300,110" fill="none" stroke="rgba(233,240,248,0.2)" stroke-width="1"/></svg>
+        </div>
+        <div class="project-body">
+          <div class="project-tag">Hydrology</div>
+          <h3>Project name two</h3>
+          <p>One or two lines describing the project scope, method, and outcome.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-thumb">
+          <svg viewBox="0 0 300 150" preserveAspectRatio="none"><path d="M0,80 C60,50 120,100 180,70 S260,40 300,60" fill="none" stroke="#5EEAD4" stroke-width="1"/><path d="M0,120 C60,90 120,140 180,110 S260,80 300,100" fill="none" stroke="rgba(233,240,248,0.2)" stroke-width="1"/></svg>
+        </div>
+        <div class="project-body">
+          <div class="project-tag">Coastal Ecology</div>
+          <h3>Project name three</h3>
+          <p>One or two lines describing the project scope, method, and outcome.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact-inner">
+    <div>
+      <div class="eyebrow">Contact</div>
+      <h2>Let's talk about research, collaboration, or work.</h2>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:your.email@example.com" class="contact-link"><span>Email</span><span class="arrow">↗</span></a>
+      <a href="#" class="contact-link"><span>LinkedIn</span><span class="arrow">↗</span></a>
+      <a href="#" class="contact-link"><span>Google Scholar</span><span class="arrow">↗</span></a>
+      <a href="#" class="contact-link"><span>ResearchGate</span><span class="arrow">↗</span></a>
+      <a href="#" class="contact-link"><span>GitHub</span><span class="arrow">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Dr. Mounika Manne · Built with care for research, remote sensing &amp; the coastline
+</footer>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const isOpen = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen);
+  });
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      links.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+
 </body>
 </html>
